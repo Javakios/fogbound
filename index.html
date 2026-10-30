@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Haptic Maze Controller</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">◎</div>
+      <div>
+        <h1>Haptic Maze Controller</h1>
+        <p>Απτικές Διεπαφές · λειτουργικό demo με εικονικό ESP32</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span id="link-pill" class="pill">● Εικονικό hardware</span>
+      <button id="btn-connect" class="btn primary">Σύνδεση ESP32 (USB)</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card game">
+      <div class="card-head">
+        <h2>Λαβύρινθος</h2>
+        <div class="seg" id="mode-seg">
+          <button data-mode="visual" class="active">Visual</button>
+          <button data-mode="haptic">Haptic</button>
+        </div>
+      </div>
+      <div class="stats">
+        <div><span id="st-time">0.0</span><label>δευτ.</label></div>
+        <div><span id="st-moves">0</span><label>βήματα</label></div>
+        <div><span id="st-wrong">0</span><label>λάθος</label></div>
+        <div><span id="st-coll">0</span><label>τοίχοι</label></div>
+        <div><span id="st-runes">0</span><label>ρούνοι</label></div>
+        <div><span id="st-caught">0</span><label>σε έπιασε</label></div>
+      </div>
+      <div class="canvas-wrap" id="view">
+        <canvas id="maze"></canvas>
+        <div id="banner" class="banner" hidden></div>
+        <button id="btn-full" class="full-btn" title="Πλήρης οθόνη (F)">⛶</button>
+      </div>
+      <p id="status" class="status"></p>
+      <div class="controls">
+        <label>Seed <input id="seed" type="number" min="1" max="99999"></label>
+        <label>Μέγεθος
+          <select id="size"><option value="10">10×10</option><option value="15" selected>15×15</option></select>
+        </label>
+        <label>Δυσκολία
+          <select id="diff"><option value="easy">Εύκολο</option><option value="normal" selected>Κανονικό</option><option value="hard">Δύσκολο</option></select>
+        </label>
+        <label>Ομίχλη στο Haptic
+          <select id="vis"><option value="0">σχεδόν τυφλά</option><option value="1" selected>πυκνή</option><option value="2">μέτρια</option></select>
+        </label>
+        <button id="btn-new" class="btn">Νέος λαβύρινθος</button>
+        <button id="btn-restart" class="btn">Restart</button>
+      </div>
+      <div class="controls toggles">
+        <label class="chk"><input id="opt-bfs" type="checkbox"> Διαδρομή BFS στον χάρτη (μόνο Visual)</label>
+        <label class="chk"><input id="opt-sound" type="checkbox" checked> Ήχος δόνησης (στερεοφωνικά)</label>
+        <label class="chk"><input id="opt-hints" type="checkbox" checked> Υπόδειξη μετά από κάθε κίνηση</label>
+      </div>
+      <p class="keys"><kbd>W</kbd>/<kbd>↑</kbd> μπροστά · <kbd>S</kbd>/<kbd>↓</kbd> πίσω · <kbd>A</kbd> <kbd>D</kbd>/<kbd>←</kbd> <kbd>→</kbd> στροφή · <kbd>Space</kbd> SW = υπόδειξη · <kbd>M</kbd> BTN1 = mode · <kbd>R</kbd> BTN2 = restart · <kbd>F</kbd> πλήρης οθόνη</p>
+    </section>
+
+    <section class="card hw">
+      <div class="card-head">
+        <h2>Εικονικό κύκλωμα</h2>
+        <span class="sub">Πέρνα το ποντίκι πάνω από κάθε εξάρτημα · σύρε το joystick · πάτα τα κουμπιά</span>
+      </div>
+      <div id="circuit" class="circuit"></div>
+      <div id="calib" class="calib" hidden>
+        <strong>Βαθμονόμηση πραγματικού joystick:</strong>
+        <label class="chk"><input id="cal-invx" type="checkbox"> αντιστροφή X</label>
+        <label class="chk"><input id="cal-invy" type="checkbox"> αντιστροφή Y</label>
+        <label class="chk"><input id="cal-swap" type="checkbox"> εναλλαγή X↔Y</label>
+      </div>
+      <div class="hw-grid">
+        <div class="info" id="info"></div>
+        <div class="scope">
+          <div class="mini-head">Παλμογράφος · τελευταία 4 δευτ.</div>
+          <canvas id="scope"></canvas>
+        </div>
+      </div>
+      <details class="pins" open>
+        <summary>Πίνακας ακροδεκτών ESP32 (live)</summary>
+        <table id="pin-table"></table>
+      </details>
+    </section>
+
+    <section class="card patterns">
+      <div class="card-head">
+        <h2>Απτικό λεξιλόγιο</h2>
+        <span class="sub">Πάτα ▶ για να εκπαιδεύσεις τον συμμετέχοντα πριν το πείραμα</span>
+      </div>
+      <div id="pattern-list" class="pattern-list"></div>
+    </section>
+
+    <section class="card log">
+      <div class="card-head">
+        <h2>Πείραμα χρηστών</h2>
+        <div class="log-actions">
+          <label>Συμμετέχων <input id="participant" type="text" value="P1" maxlength="12"></label>
+          <button id="btn-export" class="btn">Εξαγωγή CSV</button>
+          <button id="btn-clear" class="btn ghost">Καθαρισμός</button>
+        </div>
+      </div>
+      <div id="log-summary" class="log-summary"></div>
+      <div class="table-wrap">
+        <table id="log-table">
+          <thead>
+            <tr><th>#</th><th>Συμμ.</th><th>Mode</th><th>Δυσκ.</th><th>Ομίχλη</th><th>Seed</th><th>Χρόνος</th><th>Βήματα</th><th>Λάθη</th><th>Τοίχοι</th><th>Πιάστηκε</th><th>Υποδ.</th><th>Αποδοτ.</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="sub">Κάθε ολοκληρωμένος λαβύρινθος καταγράφεται αυτόματα. Αποδοτικότητα = βέλτιστες κινήσεις / πραγματικές κινήσεις.</p>
+    </section>
+  </main>
+
+  <script src="js/maze.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/haptics.js"></script>
+  <script src="js/serial.js"></script>
+  <script src="js/scope.js"></script>
+  <script src="js/circuit.js"></script>
+  <script src="js/raycaster.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
