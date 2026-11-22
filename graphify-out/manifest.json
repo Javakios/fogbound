@@ -1,0 +1,104 @@
+{
+  "js/circuit.js": {
+    "mtime": 1795365367.3744068,
+    "seen": 1795366193.1011086,
+    "ast_hash": "4de5a5420efe85c781822bf7d50305fc",
+    "semantic_hash": "4de5a5420efe85c781822bf7d50305fc"
+  },
+  "js/game.js": {
+    "mtime": 1795365367.3744068,
+    "seen": 1795366193.1011086,
+    "ast_hash": "4a3965fe6c604c2f950cc6f2e7e14fa4",
+    "semantic_hash": "4a3965fe6c604c2f950cc6f2e7e14fa4"
+  },
+  "js/haptics.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "f6adff4d935159d9b387ff3d424e8d3a",
+    "semantic_hash": "f6adff4d935159d9b387ff3d424e8d3a"
+  },
+  "js/main.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "21d926995d0b3de6cb000177d1e6cfcf",
+    "semantic_hash": "21d926995d0b3de6cb000177d1e6cfcf"
+  },
+  "js/maze.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "2b60cf9704f19b05c21c7d417d0e16f4",
+    "semantic_hash": "2b60cf9704f19b05c21c7d417d0e16f4"
+  },
+  "js/navigation.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "e457eaedcd5af3e7960a1a4bb66edc28",
+    "semantic_hash": "e457eaedcd5af3e7960a1a4bb66edc28"
+  },
+  "js/raycaster.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "5b3938e0780d414e5244681d909dd39a",
+    "semantic_hash": "5b3938e0780d414e5244681d909dd39a"
+  },
+  "js/scope.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "c9b847e15be51577086ffbc4aac458f8",
+    "semantic_hash": "c9b847e15be51577086ffbc4aac458f8"
+  },
+  "js/serial.js": {
+    "mtime": 1795365367.3847263,
+    "seen": 1795366193.1011086,
+    "ast_hash": "081bc11dc868c65c8e63f0c1ec67e946",
+    "semantic_hash": "081bc11dc868c65c8e63f0c1ec67e946"
+  },
+  "README.md": {
+    "mtime": 1795365367.3532906,
+    "seen": 1795366193.1011086,
+    "ast_hash": "b1df2838ae3babdb5c82d601deced42a",
+    "semantic_hash": "b1df2838ae3babdb5c82d601deced42a"
+  },
+  "docs/README.el.md": {
+    "mtime": 1795365367.3559866,
+    "seen": 1795366193.1011086,
+    "ast_hash": "94ed26e33f054305bab63beeca60d11a",
+    "semantic_hash": "94ed26e33f054305bab63beeca60d11a"
+  },
+  "index.html": {
+    "mtime": 1795365367.3744068,
+    "seen": 1795366193.1011086,
+    "ast_hash": "d68aea6cd9c91dce9b2dfa8fda82ac18",
+    "semantic_hash": "d68aea6cd9c91dce9b2dfa8fda82ac18"
+  },
+  "docs/img/brazier.png": {
+    "mtime": 1795365367.3604667,
+    "seen": 1795366193.1011086,
+    "ast_hash": "0771d436a4876b2394c2cb364aa6c8cc",
+    "semantic_hash": "0771d436a4876b2394c2cb364aa6c8cc"
+  },
+  "docs/img/circuit.png": {
+    "mtime": 1795365367.3624842,
+    "seen": 1795366193.1011086,
+    "ast_hash": "2ddd5f284fd5560f864be8f74be045ef",
+    "semantic_hash": "2ddd5f284fd5560f864be8f74be045ef"
+  },
+  "docs/img/portal.png": {
+    "mtime": 1795365367.3624842,
+    "seen": 1795366193.1011086,
+    "ast_hash": "5079c31fccd500ff9b1a4c2f34121edd",
+    "semantic_hash": "5079c31fccd500ff9b1a4c2f34121edd"
+  },
+  "docs/img/rune.png": {
+    "mtime": 1795365367.368981,
+    "seen": 1795366193.1011086,
+    "ast_hash": "b525b8b9aee51949b4f4163e9fd8ca93",
+    "semantic_hash": "b525b8b9aee51949b4f4163e9fd8ca93"
+  },
+  "docs/img/shade.png": {
+    "mtime": 1795365367.368981,
+    "seen": 1795366193.1011086,
+    "ast_hash": "594259e3b9d3b20baf40f79a6d08d650",
+    "semantic_hash": "594259e3b9d3b20baf40f79a6d08d650"
+  }
+}

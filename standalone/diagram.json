@@ -1,0 +1,270 @@
+{
+  "version": 1,
+  "author": "fogbound",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-ili9341",
+      "id": "tft",
+      "top": -190,
+      "left": 230,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joy",
+      "top": -30,
+      "left": -190,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 240,
+      "left": -120,
+      "attrs": {
+        "color": "blue",
+        "label": "MODE"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn2",
+      "top": 240,
+      "left": -30,
+      "attrs": {
+        "color": "red",
+        "label": "RESTART"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rl",
+      "top": -60,
+      "left": 330,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rr",
+      "top": -20,
+      "left": 330,
+      "attrs": {
+        "value": "1000"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledL",
+      "top": -70,
+      "left": 430,
+      "attrs": {
+        "color": "orange",
+        "label": "M1 motor LEFT"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledR",
+      "top": -30,
+      "left": 430,
+      "attrs": {
+        "color": "orange",
+        "label": "M2 motor RIGHT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rm",
+      "top": 20,
+      "left": 330,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledM",
+      "top": 10,
+      "left": 430,
+      "attrs": {
+        "color": "green",
+        "label": "LED2 haptic mode"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:D5",
+      "tft:CS",
+      "orange",
+      []
+    ],
+    [
+      "esp:D21",
+      "tft:D/C",
+      "purple",
+      []
+    ],
+    [
+      "esp:D22",
+      "tft:RST",
+      "gray",
+      []
+    ],
+    [
+      "esp:D23",
+      "tft:MOSI",
+      "green",
+      []
+    ],
+    [
+      "esp:D18",
+      "tft:SCK",
+      "blue",
+      []
+    ],
+    [
+      "esp:D19",
+      "tft:MISO",
+      "white",
+      []
+    ],
+    [
+      "esp:3V3",
+      "tft:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:3V3",
+      "tft:LED",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "tft:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D34",
+      "joy:HORZ",
+      "green",
+      []
+    ],
+    [
+      "esp:D35",
+      "joy:VERT",
+      "blue",
+      []
+    ],
+    [
+      "esp:D32",
+      "joy:SEL",
+      "yellow",
+      []
+    ],
+    [
+      "esp:3V3",
+      "joy:VCC",
+      "red",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "joy:GND",
+      "black",
+      []
+    ],
+    [
+      "esp:D27",
+      "btn1:1.l",
+      "blue",
+      []
+    ],
+    [
+      "btn1:2.l",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D14",
+      "btn2:1.l",
+      "red",
+      []
+    ],
+    [
+      "btn2:2.l",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D25",
+      "rl:1",
+      "yellow",
+      []
+    ],
+    [
+      "rl:2",
+      "ledL:A",
+      "yellow",
+      []
+    ],
+    [
+      "ledL:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D26",
+      "rr:1",
+      "yellow",
+      []
+    ],
+    [
+      "rr:2",
+      "ledR:A",
+      "yellow",
+      []
+    ],
+    [
+      "ledR:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D4",
+      "rm:1",
+      "green",
+      []
+    ],
+    [
+      "rm:2",
+      "ledM:A",
+      "green",
+      []
+    ],
+    [
+      "ledM:C",
+      "esp:GND.1",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
